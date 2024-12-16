@@ -44,8 +44,8 @@ app.get('/', (req, res) => {
             </head>
             <body>
                 <h1>Welcome to O N S P</h1>
-                <p>Your Smart Loan Management System</p>
-                <a href="/submit-application">Submit Loan Application</a>
+               // <p>Your Smart Loan Management System</p>
+                <a href="./index.html">go to main page</a>
             </body>
         </html>
     `);
