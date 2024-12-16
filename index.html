@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./index.css">
+    <title>Home - O N S P</title>
+</head>
+<body>
+    <!--  style="background-color: white; color: black;" -->
+
+    <nav class="navbar">
+
+        <div class="navbar-container">
+            <a href="#" class="company-name">O N S P</a>
+            <ul class="navbar-nav">
+                <!-- <li class="nav-item">
+                    <a href="01-index.html" class="nav-link">Home</a>
+                </li> -->
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle">Services</a>
+                    <div class="dropdown-menu">
+                        <a href="./03-locker.html" class="dropdown-option">Locker</a>
+                        <a href="./10-recurring.html" class="dropdown-option">Recurring</a>
+                        <a href="./11-rtgs.html" class="dropdown-option">RTGS</a>
+                        <a href="12-saving.html" class="dropdown-option">Saving</a>
+                        <a href="13-termdepositdetails.html" class="dropdown-option">Term Deposit</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle">About</a>
+                    <div class="dropdown-menu">
+                        <a href="06-ourvalues.html" class="dropdown-option">Our Values</a>
+                        <a href="07-ourventures.html" class="dropdown-option">Our Ventures</a>
+                        <a href="05-ourteam.html" class="dropdown-option">Our Team</a>
+                        <a href="08-ourvision.html" class="dropdown-option">Our Vision</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="09-loan.html" class="nav-link">Loan</a>
+                </li>
+                <li class="nav-item">
+                    <a href="./02-loancalculator.html" class="nav-link">Loan Calculator</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    
+
+    <div class="cardcontainer">
+        <div class="card">
+          <img class="cardimg" src="https://i0.wp.com/www.celebratebanking.com/blog/wp-content/uploads/2019/03/Term-deposit-interest-FD-Fixed-Deposit-rate-quarterly-compounding-1.jpg?resize=300%2C150" alt="Term Deposit">
+          <h2>Term Deposit</h2>
+          <a href="./13-termdepositdetails.html" class="read-more">Read More</a>
+        </div>
+        <div class="card">
+          <img class="cardimg" src="https://st.depositphotos.com/3246463/5039/i/450/depositphotos_50396315-stock-photo-personal-loan.jpg" alt=" Loan">
+          <h2> Loan</h2>
+          <a href="./09-loan.html" class="read-more">Read More</a>
+        </div>
+        <div class="card">
+          <img class="cardimg" src="https://www.shutterstock.com/image-photo/closeup-person-opening-locker-key-600nw-2459100479.jpg" alt="Locker">
+          <h2>Locker</h2>
+          <a href="./03-locker.html" class="read-more">Read More</a>
+        </div>
+        <div class="card">
+          <img class="cardimg" src="https://margcompusoft.com/m/wp-content/uploads/2021/07/RTGS-1.png" alt="RTGS">
+          <h2>RTGS</h2>
+          <a href="./11-rtgs.html" class="read-more">Read More</a>
+        </div>
+        <div class="card">
+            <img class="cardimg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQh2qXbzhTkyIWXO1x3ofZfLxrYefn0SO_hLw&s" alt="Recurring">
+            <h2>Recurring</h2>
+            <a href="./10-recurring.html" class="read-more">Read More</a>
+          </div>
+      </div>
+
+    <div class="form">
+        <form id="applyForm" method="POST" action="http://localhost:3000/submit-application">
+            <h3>Fill details to apply loan</h3>
+            <select  name="loanoption">
+                <option value="personalloan">Personal Loan</option>
+                <option value="fdloan">FD Loan</option>
+                <option value="goldloan">Gold Loan</option>
+                <option value="vehicleloan">Vehicle Loan</option>
+            </select><br><br>
+
+            <input type="text" name="name" placeholder="Enter your full name" required><br><br>
+            <input type="text" name="address" placeholder="Enter your address" required><br><br>
+            <input type="tel" name="pincode" placeholder="Enter your pincode" maxlength="6" required><br><br>
+            <input type="tel" name="loanAmount" placeholder="Enter loan amount" maxlength="7" required><br><br>
+            <input type="tel" name="mobileno" placeholder="Enter mobile number" maxlength="10" required><br><br>
+            <input type="tel" name="loantenure" placeholder="Enter loan tenure (months)" maxlength="2" required><br><br>
+
+
+            <button type="submit">Apply</button><br><br><br>
+        </form>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-details">
+                <h1>O N S P</h1>
+                <p>We are committed to providing top-notch financial services. Our experienced team is here to help you.</p>
+                <p>Email: netkeshiv@gmail.com</p>
+                <p>Address: Bhingar</p>
+                <p>Phone: 9881930329</p>
+            </div>
+            <div class="footer-follows">
+                <h2>Follow Us</h2>
+                <a href="#"><img src="facebook.png" alt="Facebook"></a>
+                <a href="#"><img src="twitter.png" alt="Twitter"></a>
+                <a href="#"><img src="linkedin.png" alt="LinkedIn"></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 O N S P. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
