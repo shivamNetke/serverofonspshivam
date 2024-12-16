@@ -76,7 +76,7 @@ app.post('/submit-application', (req, res) => { // Change from './index.html' to
                     <button onclick="goToHome()">Go to Home</button>
                     <script>
                         function goToHome() {
-                            window.location.href = '/index.html';
+                            window.location.href = './index.html';
                         }
                     </script>
                 </body>
