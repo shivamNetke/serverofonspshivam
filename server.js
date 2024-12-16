@@ -1,13 +1,14 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
-const path = require('path'); 
+const path = require('path');
 
 const app = express();
 const port = process.env.PORT || 3000; // Use PORT from the environment if available
 
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname))); // Serve static files from the root directory
+// Serve static files from the root directory
+app.use(express.static(__dirname)); // This will serve files like 'index.html', 'styles.css', etc., directly from the root
 
 // Serve the home page
 app.get('/', (req, res) => {
@@ -24,7 +25,7 @@ const transporter = nodemailer.createTransport({
 });
 
 // Handle loan application form submission
-app.post('/submit-application', (req, res) => {
+app.post('/submit-application', (req, res) => { // Change from './index.html' to '/submit-application'
     const { loanoption, name, address, pincode, loanAmount, mobileno, loantenure } = req.body;
 
     const mailOptions = {
