@@ -3,50 +3,44 @@ const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
 const path = require('path'); 
 
-
 const app = express();
 const port = process.env.PORT || 3000; // Use PORT from the environment if available
 
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname))); // Serve static files from the root directory
 
-// Serve the home page (index.html)
+// Serve the home page
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    res.sendFile(path.join(__dirname, 'index.html')); // Serve index.html from the root
 });
 
-// Setup Nodemailer transporter
+// Nodemailer setup
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
         user: 'netkeshiv3521@gmail.com',
-        pass: 'ocdq iyun clhl xgyl' // Replace with your actual email password
+        pass: 'ocdq iyun clhl xgyl'
     }
 });
 
-// Route to handle loan application form submission
+// Handle loan application form submission
 app.post('/submit-application', (req, res) => {
     const { loanoption, name, address, pincode, loanAmount, mobileno, loantenure } = req.body;
 
-    // Log the form data to the console
-    console.log(`Loan Option: ${loanoption}, Name: ${name}, Address: ${address}, Pincode: ${pincode}, Loan Amount: ${loanAmount}, Mobile No: ${mobileno}, Loan Tenure: ${loantenure} months`);
-
-    // Nodemailer: Send an email with the loan application details
     const mailOptions = {
         from: 'netkeshiv3521@gmail.com',
-        to: 'netakeshivam@aca.edu.in', 
+        to: 'netakeshivam@aca.edu.in',
         subject: 'New Loan Application Received',
         text: `New loan application received:\n\nLoan Option: ${loanoption}\nName: ${name}\nAddress: ${address}\nPincode: ${pincode}\nLoan Amount: ${loanAmount}\nMobile No: ${mobileno}\nLoan Tenure: ${loantenure} months`
     };
 
     transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
-            console.log(error); 
+            console.log(error);
             return res.status(500).send('Error occurred while sending email');
         }
         console.log('Email sent: ' + info.response);
 
-        // Send success message to user
         res.status(200).send(`
             <!DOCTYPE html>
             <html lang="en">
@@ -81,7 +75,7 @@ app.post('/submit-application', (req, res) => {
                     <button onclick="goToHome()">Go to Home</button>
                     <script>
                         function goToHome() {
-                            window.location.href = '/'; // Go to home page
+                            window.location.href = '/';
                         }
                     </script>
                 </body>
