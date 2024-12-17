@@ -1,0 +1,45 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.recuringheading h1 {
+    text-align: center;
+    color: #000;
+    margin-bottom: 20px;
+}
+
+.p {
+    color: #666;
+    line-height: 1.6;
+}
+
+.importance-list {
+    margin-top: 20px;
+    padding: 0;
+}
+
+.importance-item {
+    margin-bottom: 10px;
+}
+
+.importance-item::before {
+    content: "\2022";
+    color: #000;
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+}
