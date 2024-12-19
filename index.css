@@ -28,7 +28,7 @@ body {
 }
 
 .navbar-nav {
-    list-style: none; 
+    list-style: none;
     padding: 0;
     margin: 0;
     display: flex;
@@ -41,7 +41,7 @@ body {
 .nav-link {
     color: #007BFF;
     text-decoration: none;
-    padding: 15px 15px;
+    padding: 15px;
     transition: background-color 0.3s, color 0.3s;
 }
 
@@ -50,94 +50,37 @@ body {
     color: #0056b3;
 }
 
-.dropdown-menu {
-    display: none;
-    position: absolute;
-    background-color: #f8f8f8;
-    padding: 10px 0;
-    z-index: 1000;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-}
-
-.dropdown:hover .dropdown-menu {
-    display: block;
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.dropdown-option {
-    color: #007BFF;
-    padding: 10px 15px;
-    text-decoration: none;
-    display: block;
-}
-
-.dropdown-option:hover {
-    text-decoration: underline;
-}
-
-.form {
-    border: 1px solid black;
-    text-align: center;
-    justify-content: center;
-    margin: 5% 10%;
-    border-radius: 8px;
+.cardcontainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
     padding: 20px;
 }
 
-.form input {
-    border: 1px solid black;
-    border-radius: 3px;
-    padding: 7px 15px;
-    margin-bottom: 10px;
-    width: 100%;
-    max-width: 400px;
-    box-sizing: border-box;
-}
-
-.form button {
-    border: 1px solid black;
-    border-radius: 3px;
-    color: white;
-    background-color: black;
-    padding: 8px 100px;
-    transition: background-color 0.3s, transform 0.3s;
-}
-
-.form button:hover {
-    background-color: #333;
-    transform: scale(1.05);
-}
-
-.form select {
-    border: 1px solid black;
-    border-radius: 3px;
-    padding: 7px 15px;
-    width: 100%;
-    max-width: 400px;
-    box-sizing: border-box;
-}
-
 .card {
-    width: 100%;
-    max-width: 300px;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    margin: 20px;
+    text-align: center;
     transition: transform 0.3s;
 }
 
 .card:hover {
     transform: scale(1.05);
-    box-shadow: 0 4px 8px black;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
 }
 
 .card h2 {
-    margin-top: 0;
+    margin: 10px 0;
+    font-size: 18px;
     color: #333;
 }
 
@@ -146,33 +89,47 @@ body {
     line-height: 1.5;
 }
 
-.read-more {
-    color: #007bff;
-    cursor: pointer;
+.card .read-more {
+    display: block;
+    margin-top: 10px;
     text-decoration: none;
+    color: #007BFF;
     font-weight: bold;
 }
 
-.read-more:hover {
+.card .read-more:hover {
     text-decoration: underline;
 }
 
-.card img {
-    width: 100%;
+.form {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
     border-radius: 8px;
-    margin-bottom: 10px;
-    object-fit: cover;
-    height: 150px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
 }
 
-.cardcontainer {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    min-height: 60vh;
-    background-color: #f0f0f0;
-    padding: 20px;
+.form input, .form select, .form button {
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.form button {
+    background-color: #007BFF;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.form button:hover {
+    background-color: #0056b3;
 }
 
 .footer {
@@ -180,64 +137,46 @@ body {
     color: #333;
     padding: 20px 0;
     margin-top: 20px;
+    text-align: center;
 }
 
 .footer-container {
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
-    justify-content: space-between;
     flex-wrap: wrap;
+    justify-content: space-between;
     padding: 0 20px;
-    text-align: center;
 }
 
-.footer-details {
-    flex: 1;
-    margin-bottom: 10px;
-}
-
-.footer-follows {
-    flex: 1;
-    text-align: center;
+.footer-details, .footer-follows {
+    flex: 1 1 300px;
+    margin: 10px 0;
 }
 
 .footer-follows img {
     width: 30px;
-    margin-left: 10px;
+    margin: 0 5px;
     transition: transform 0.3s;
 }
 
 .footer-follows img:hover {
-    transform: scale(1.1);
+    transform: scale(1.2);
 }
 
-.footer-bottom {
-    text-align: center;
-    padding-top: 10px;
-}
-
-/* Media Queries for Responsiveness */
+/* Responsive Design */
 @media (max-width: 768px) {
     .navbar-container {
         flex-direction: column;
-        align-items: flex-start;
+        text-align: center;
     }
 
     .cardcontainer {
-        flex-wrap: wrap;
-    }
-
-    .form {
-        margin: 5% 5%;
+        grid-template-columns: 1fr;
     }
 
     .footer-container {
         flex-direction: column;
-        align-items: center;
-    }
-
-    .footer-follows {
-        margin-top: 10px;
+        text-align: center;
     }
 }
