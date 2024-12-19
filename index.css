@@ -2,12 +2,12 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #ffffff; /* White background */
-    color: #333; /* Dark text color */
+    background-color: #ffffff;
+    color: #333;
 }
 
 .navbar {
-    background-color: #f8f8f8; /* Light gray background for navbar */
+    background-color: #f8f8f8;
     padding: 10px 0;
 }
 
@@ -21,7 +21,7 @@ body {
 }
 
 .company-name {
-    color: #007BFF; /* Blue color for the company name */
+    color: #007BFF;
     font-size: 18px;
     text-decoration: none;
     font-weight: bold;
@@ -39,35 +39,36 @@ body {
 }
 
 .nav-link {
-    color: #007BFF; /* Blue link color */
+    color: #007BFF;
     text-decoration: none;
     padding: 15px 15px;
     transition: background-color 0.3s, color 0.3s;
 }
 
 .nav-link:hover {
-    background-color: #e7f1ff; /* Light blue background on hover */
-    color: #0056b3; /* Darker blue on hover */
+    background-color: #e7f1ff;
+    color: #0056b3;
 }
 
 .dropdown-menu {
     display: none;
     position: absolute;
-    background-color: #f8f8f8; /* Light gray background */
+    background-color: #f8f8f8;
     padding: 10px 0;
     z-index: 1000;
     border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
 }
 
 .dropdown:hover .dropdown-menu {
-    display: block; 
-    /* Show dropdown on hover */
-    width: 150px;
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .dropdown-option {
-    color: #007BFF; /* Blue color for dropdown options */
+    color: #007BFF;
     padding: 10px 15px;
     text-decoration: none;
     display: block;
@@ -75,107 +76,107 @@ body {
 
 .dropdown-option:hover {
     text-decoration: underline;
-    /* background-color: #e7f1ff; */
-     /* Light blue background on hover */
 }
 
-.form{
+.form {
     border: 1px solid black;
     text-align: center;
     justify-content: center;
-    margin: 5% 20%;
+    margin: 5% 10%;
     border-radius: 8px;
+    padding: 20px;
 }
 
-.form input{
-    text-decoration: none;
+.form input {
     border: 1px solid black;
     border-radius: 3px;
-    padding: 7px 31px;
+    padding: 7px 15px;
+    margin-bottom: 10px;
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box;
 }
 
-.form button{
-    text-decoration: none;
+.form button {
     border: 1px solid black;
     border-radius: 3px;
     color: white;
     background-color: black;
     padding: 8px 100px;
-
+    transition: background-color 0.3s, transform 0.3s;
 }
 
-.form select{
-    text-decoration: none;
+.form button:hover {
+    background-color: #333;
+    transform: scale(1.05);
+}
+
+.form select {
     border: 1px solid black;
     border-radius: 3px;
-    padding: 7px 63px;
+    padding: 7px 15px;
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box;
 }
 
 .card {
-    width: 300px;
+    width: 100%;
+    max-width: 300px;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
     margin: 20px;
-  }
-  .card:hover{
+    transition: transform 0.3s;
+}
+
+.card:hover {
     transform: scale(1.05);
-    box-shadow: 0 4px 8px  black;;
-  }
-  
-  .card h2 {
+    box-shadow: 0 4px 8px black;
+}
+
+.card h2 {
     margin-top: 0;
     color: #333;
-  }
-  
-  .card p {
+}
+
+.card p {
     color: #666;
     line-height: 1.5;
-  }
-  
-  .read-more {
+}
+
+.read-more {
     color: #007bff;
     cursor: pointer;
-  }
-  
-  .read-more:hover {
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.read-more:hover {
     text-decoration: underline;
-  }
-  
-  .card img {
+}
+
+.card img {
     width: 100%;
     border-radius: 8px;
     margin-bottom: 10px;
-  }
-  .cardcontainer{
+    object-fit: cover;
+    height: 150px;
+}
+
+.cardcontainer {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     min-height: 60vh;
     background-color: #f0f0f0;
-  }
-  
-  .cardcontainer .card .read-more {
-    display: block;
-    margin-top: 10px;
-    text-decoration: none;
-    color: #007bff; /* Change the color as per your preference */
-    font-weight: bold;
-  }
-  
-  .cardcontainer .card .read-more:hover {
-    text-decoration: underline;
-  }
-  
-  .cardimg{
-    height: 120px;
-    width: 150px;
-  }
-  
+    padding: 20px;
+}
 
 .footer {
-    background-color: #f8f8f8; /* Light gray background for footer */
+    background-color: #f8f8f8;
     color: #333;
     padding: 20px 0;
     margin-top: 20px;
@@ -186,16 +187,19 @@ body {
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
     padding: 0 20px;
+    text-align: center;
 }
 
 .footer-details {
     flex: 1;
+    margin-bottom: 10px;
 }
 
 .footer-follows {
     flex: 1;
-    text-align: right;
+    text-align: center;
 }
 
 .footer-follows img {
@@ -211,4 +215,29 @@ body {
 .footer-bottom {
     text-align: center;
     padding-top: 10px;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .navbar-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .cardcontainer {
+        flex-wrap: wrap;
+    }
+
+    .form {
+        margin: 5% 5%;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-follows {
+        margin-top: 10px;
+    }
 }
