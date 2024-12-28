@@ -1,4 +1,3 @@
-/* General Body Styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -7,26 +6,18 @@ body {
     color: #333; /* Dark text color */
 }
 
-/* Navbar Styles */
 .navbar {
-    background-color: #f8f8f8; /* Light gray background */
-    padding: 10px 20px;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    background-color: #f8f8f8; /* Light gray background for navbar */
+    padding: 10px 0;
 }
 
 .navbar-container {
     max-width: 1300px;
     margin: 0 auto;
-    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 0 20px;
 }
 
 .company-name {
@@ -36,139 +27,158 @@ body {
     font-weight: bold;
 }
 
-.navbar ul {
-    list-style: none;
-    display: flex;
-    margin: 0;
+.navbar-nav {
+    list-style: none; 
     padding: 0;
-    gap: 15px;
-}
-
-.navbar ul li {
-    display: inline;
-}
-
-.navbar a {
-    text-decoration: none;
-    color: #007BFF; /* Blue link color */
-    padding: 10px 15px;
-    font-size: 16px;
-    transition: color 0.3s, background-color 0.3s;
-}
-
-.navbar a:hover {
-    color: #0056b3; /* Darker blue on hover */
-    background-color: #e7f1ff; /* Light blue background */
-    border-radius: 5px;
-}
-
-@media (max-width: 768px) {
-    .navbar {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .navbar ul {
-        flex-direction: column;
-        gap: 10px;
-        width: 100%;
-    }
-
-    .navbar a {
-        width: 100%;
-        text-align: left;
-    }
-}
-
-/* Card Styles */
-.card {
-    width: 100%;
-    max-width: 300px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    margin: 20px auto;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 8px black;
-}
-
-.card h2 {
-    margin-top: 0;
-    color: #333;
-}
-
-.card p {
-    color: #666;
-    line-height: 1.5;
-}
-
-.card img {
-    width: 100%;
-    border-radius: 8px;
-    margin-bottom: 10px;
-}
-
-.cardcontainer {
+    margin: 0;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    min-height: 60vh;
-    background-color: #f0f0f0;
 }
 
-/* Form Styles */
-.form {
+.nav-item {
+    position: relative;
+}
+
+.nav-link {
+    color: #007BFF; /* Blue link color */
+    text-decoration: none;
+    padding: 15px 15px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.nav-link:hover {
+    background-color: #e7f1ff; /* Light blue background on hover */
+    color: #0056b3; /* Darker blue on hover */
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: #f8f8f8; /* Light gray background */
+    padding: 10px 0;
+    z-index: 1000;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block; 
+    /* Show dropdown on hover */
+    width: 150px;
+}
+
+.dropdown-option {
+    color: #007BFF; /* Blue color for dropdown options */
+    padding: 10px 15px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-option:hover {
+    text-decoration: underline;
+    /* background-color: #e7f1ff; */
+     /* Light blue background on hover */
+}
+
+.form{
     border: 1px solid black;
     text-align: center;
     justify-content: center;
-    margin: 5% 10%;
-    padding: 20px;
+    margin: 5% 20%;
     border-radius: 8px;
-    background-color: #f9f9f9;
 }
 
-.form input,
-.form select {
-    width: 90%;
-    max-width: 400px;
+.form input{
     text-decoration: none;
     border: 1px solid black;
     border-radius: 3px;
-    padding: 10px;
-    margin-bottom: 10px;
-    font-size: 16px;
+    padding: 7px 31px;
 }
 
-.form button {
+.form button{
     text-decoration: none;
     border: 1px solid black;
     border-radius: 3px;
     color: white;
     background-color: black;
-    padding: 10px 100px;
-    font-size: 16px;
+    padding: 8px 100px;
+
+}
+
+.form select{
+    text-decoration: none;
+    border: 1px solid black;
+    border-radius: 3px;
+    padding: 7px 63px;
+}
+
+.card {
+    width: 300px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px;
+  }
+  .card:hover{
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px  black;;
+  }
+  
+  .card h2 {
+    margin-top: 0;
+    color: #333;
+  }
+  
+  .card p {
+    color: #666;
+    line-height: 1.5;
+  }
+  
+  .read-more {
+    color: #007bff;
     cursor: pointer;
-    transition: background-color 0.3s;
-}
+  }
+  
+  .read-more:hover {
+    text-decoration: underline;
+  }
+  
+  .card img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  .cardcontainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
+    background-color: #f0f0f0;
+  }
+  
+  .cardcontainer .card .read-more {
+    display: block;
+    margin-top: 10px;
+    text-decoration: none;
+    color: #007bff; /* Change the color as per your preference */
+    font-weight: bold;
+  }
+  
+  .cardcontainer .card .read-more:hover {
+    text-decoration: underline;
+  }
+  
+  .cardimg{
+    height: 120px;
+    width: 150px;
+  }
+  
 
-.form button:hover {
-    background-color: #333;
-}
-
-/* Footer Styles */
 .footer {
     background-color: #f8f8f8; /* Light gray background for footer */
     color: #333;
     padding: 20px 0;
     margin-top: 20px;
-    text-align: center;
 }
 
 .footer-container {
@@ -176,13 +186,11 @@ body {
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap;
     padding: 0 20px;
 }
 
 .footer-details {
     flex: 1;
-    margin-bottom: 20px;
 }
 
 .footer-follows {
@@ -203,23 +211,4 @@ body {
 .footer-bottom {
     text-align: center;
     padding-top: 10px;
-    font-size: 14px;
-}
-
-/* Media Queries */
-@media (max-width: 768px) {
-    .form {
-        margin: 5%;
-        padding: 15px;
-    }
-
-    .footer-container {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .footer-follows {
-        text-align: center;
-        margin-top: 10px;
-    }
 }
