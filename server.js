@@ -5,16 +5,16 @@ const fs = require('fs');
 const path = require('path');
 
 const app = express();
-const port = 4000; // Use PORT from the environment if available
+const port = process.env.PORT || 3000;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Serve static files from the root directory
-app.use(express.static(__dirname)); // This will serve files like 'index.html', 'styles.css', etc., directly from the root
+app.use(express.static(__dirname));
 
 // Serve the home page
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html')); // Serve index.html from the root
+    res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 // Nodemailer setup
@@ -46,7 +46,8 @@ Loan Tenure: ${loantenure} months
 `;
 
     // Append data to the file
-    fs.appendFile('loan-applications.txt', applicationData, (err) => {
+    const filePath = 'D:/receivedFromSharedFolder/project - Copy/loan-application.txt';
+    fs.appendFile(filePath, applicationData, (err) => {
         if (err) {
             console.error('Error saving application:', err);
         } else {
