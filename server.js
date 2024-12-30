@@ -1,12 +1,14 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
+const fs = require('fs');
 const path = require('path');
 
 const app = express();
 const port = process.env.PORT || 3000; // Use PORT from the environment if available
 
 app.use(bodyParser.urlencoded({ extended: true }));
+
 // Serve static files from the root directory
 app.use(express.static(__dirname)); // This will serve files like 'index.html', 'styles.css', etc., directly from the root
 
@@ -20,19 +22,44 @@ const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
         user: 'netkeshiv3521@gmail.com',
-        pass: 'ocdq iyun clhl xgyl'
-    }
+        pass: 'ocdq iyun clhl xgyl',
+    },
 });
 
 // Handle loan application form submission
-app.post('/submit-application', (req, res) => { // Change from './index.html' to '/submit-application'
+app.post('/submit-application', (req, res) => {
     const { loanoption, name, address, pincode, loanAmount, mobileno, loantenure } = req.body;
 
+    // Get the current date and time
+    const currentDate = new Date().toLocaleString();
+
+    const applicationData = `
+Date: ${currentDate}
+Loan Option: ${loanoption}
+Name: ${name}
+Address: ${address}
+Pincode: ${pincode}
+Loan Amount: ${loanAmount}
+Mobile No: ${mobileno}
+Loan Tenure: ${loantenure} months
+------------------------------
+`;
+
+    // Append data to the file
+    fs.appendFile('loan-applications.txt', applicationData, (err) => {
+        if (err) {
+            console.error('Error saving application:', err);
+        } else {
+            console.log('Application data saved successfully.');
+        }
+    });
+
+    // Email logic
     const mailOptions = {
         from: 'netkeshiv3521@gmail.com',
         to: 'netakeshivam@aca.edu.in',
         subject: 'New Loan Application Received',
-        text: `New loan application received:\n\nLoan Option: ${loanoption}\nName: ${name}\nAddress: ${address}\nPincode: ${pincode}\nLoan Amount: ${loanAmount}\nMobile No: ${mobileno}\nLoan Tenure: ${loantenure} months`
+        text: `New loan application received:\n\n${applicationData}`,
     };
 
     transporter.sendMail(mailOptions, (error, info) => {
