@@ -7,16 +7,10 @@
     <title>Home - O N S P</title>
 </head>
 <body>
-    <!--  style="background-color: white; color: black;" -->
-
     <nav class="navbar">
-
         <div class="navbar-container">
             <a href="#" class="company-name">O N S P</a>
             <ul class="navbar-nav">
-                <!-- <li class="nav-item">
-                    <a href="./index.html" class="nav-link">Home</a>
-                </li> -->
                 <li class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle">Services</a>
                     <div class="dropdown-menu">
@@ -46,55 +40,23 @@
         </div>
     </nav>
     
-
-    <div class="cardcontainer">
-        <div class="card">
-          <img class="cardimg" src="https://i0.wp.com/www.celebratebanking.com/blog/wp-content/uploads/2019/03/Term-deposit-interest-FD-Fixed-Deposit-rate-quarterly-compounding-1.jpg?resize=300%2C150" alt="Term Deposit">
-          <h2>Term Deposit</h2>
-          <a href="./termdepositdetails.html" class="read-more">Read More</a>
-        </div>
-        <div class="card">
-          <img class="cardimg" src="https://st.depositphotos.com/3246463/5039/i/450/depositphotos_50396315-stock-photo-personal-loan.jpg" alt=" Loan">
-          <h2> Loan</h2>
-          <a href="./loan.html" class="read-more">Read More</a>
-        </div>
-        <div class="card">
-          <img class="cardimg" src="https://www.shutterstock.com/image-photo/closeup-person-opening-locker-key-600nw-2459100479.jpg" alt="Locker">
-          <h2>Locker</h2>
-          <a href="./locker.html" class="read-more">Read More</a>
-        </div>
-        <div class="card">
-          <img class="cardimg" src="https://margcompusoft.com/m/wp-content/uploads/2021/07/RTGS-1.png" alt="RTGS">
-          <h2>RTGS</h2>
-          <a href="./rtgs.html" class="read-more">Read More</a>
-        </div>
-        <div class="card">
-            <img class="cardimg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQh2qXbzhTkyIWXO1x3ofZfLxrYefn0SO_hLw&s" alt="Recurring">
-            <h2>Recurring</h2>
-            <a href="./recurring.html" class="read-more">Read More</a>
-          </div>
-      </div>
-
     <div class="form">
-        <form id="applyForm" method="POST" action="http://localhost:3000/submit-application">
-        <form action="https://serverofonspshivam.onrender.com/submit-application" method="POST">
-            <h3>Fill details to apply loan</h3>
-            <select  name="loanoption">
+        <form id="applyForm" action="https://serverofonspshivam.onrender.com/submit-application" method="POST">
+            <h3>Fill details to apply for a loan</h3>
+            <select name="loanoption" required>
+                <option value="" disabled selected>Select Loan Type</option>
                 <option value="personal loan">Personal Loan</option>
                 <option value="fdloan">FD Loan</option>
                 <option value="goldloan">Gold Loan</option>
                 <option value="vehicleloan">Vehicle Loan</option>
             </select><br><br>
-
             <input type="text" name="name" placeholder="Enter your full name" required><br><br>
             <input type="text" name="address" placeholder="Enter your address" required><br><br>
             <input type="tel" name="pincode" placeholder="Enter your pincode" maxlength="6" required><br><br>
-            <input type="tel" name="loanAmount" placeholder="Enter loan amount" maxlength="7" required><br><br>
+            <input type="number" name="loanAmount" placeholder="Enter loan amount" min="1" required><br><br>
             <input type="tel" name="mobileno" placeholder="Enter mobile number" maxlength="10" required><br><br>
-            <input type="tel" name="loantenure" placeholder="Enter loan tenure (months)" maxlength="2" required><br><br>
-
-
-            <button type="submit">Apply</button><br><br><br>
+            <input type="number" name="loantenure" placeholder="Enter loan tenure (months)" min="1" required><br><br>
+            <button type="submit">Apply</button><br><br>
         </form>
     </div>
 
@@ -118,6 +80,5 @@
             <p>&copy; 2024 O N S P. All rights reserved.</p>
         </div>
     </footer>
-
 </body>
 </html>
