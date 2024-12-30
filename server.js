@@ -5,7 +5,7 @@ const fs = require('fs');
 const path = require('path');
 
 const app = express();
-const port = process.env.PORT || 3000; // Use PORT from the environment if available
+const port = 4000; // Use PORT from the environment if available
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
