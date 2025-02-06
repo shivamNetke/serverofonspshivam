@@ -1,18 +1,15 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
-const fs = require('fs');
 const path = require('path');
+const fs = require('fs');
 
 const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(bodyParser.urlencoded({ extended: true }));
-
-// Serve static files from the root directory
 app.use(express.static(__dirname));
 
-// Serve the home page
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
@@ -22,45 +19,31 @@ const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
         user: 'netkeshiv3521@gmail.com',
-        pass: 'ocdq iyun clhl xgyl',
-    },
+        pass: 'ocdq iyun clhl xgyl'
+    }
 });
 
-// Handle loan application form submission
 app.post('/submit-application', (req, res) => {
     const { loanoption, name, address, pincode, loanAmount, mobileno, loantenure } = req.body;
 
-    // Get the current date and time
-    const currentDate = new Date().toLocaleString();
+    // Format loan data
+    const loanData = `Loan Option: ${loanoption}\nName: ${name}\nAddress: ${address}\nPincode: ${pincode}\nLoan Amount: ${loanAmount}\nMobile No: ${mobileno}\nLoan Tenure: ${loantenure} months\n------------------------\n`;
 
-    const applicationData = `
-Date: ${currentDate}
-Loan Option: ${loanoption}
-Name: ${name}
-Address: ${address}
-Pincode: ${pincode}
-Loan Amount: ${loanAmount}
-Mobile No: ${mobileno}
-Loan Tenure: ${loantenure} months
-------------------------------
-`;
-
-    // Append data to the file
-    const filePath = 'D:/receivedFromSharedFolder/project - Copy/loan-application.txt';
-    fs.appendFile(filePath, applicationData, (err) => {
+    // Append loan data to orders.txt
+    fs.appendFile('orders.txt', loanData, (err) => {
         if (err) {
-            console.error('Error saving application:', err);
+            console.error('Error saving to file:', err);
         } else {
-            console.log('Application data saved successfully.');
+            console.log('Loan data saved to orders.txt');
         }
     });
 
-    // Email logic
+    // Email details
     const mailOptions = {
         from: 'netkeshiv3521@gmail.com',
         to: 'netakeshivam@aca.edu.in',
         subject: 'New Loan Application Received',
-        text: `New loan application received:\n\n${applicationData}`,
+        text: `New loan application received:\n\n${loanData}`
     };
 
     transporter.sendMail(mailOptions, (error, info) => {
@@ -113,7 +96,6 @@ Loan Tenure: ${loantenure} months
     });
 });
 
-// Start the server
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
 });
