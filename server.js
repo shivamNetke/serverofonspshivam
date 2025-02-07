@@ -14,7 +14,10 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-// Nodemailer setup
+// Define file path for saving loan applications
+const filePath = path.join(__dirname, 'orders.txt');
+
+// Nodemailer setup (No changes to user and pass)
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
@@ -26,19 +29,35 @@ const transporter = nodemailer.createTransport({
 app.post('/submit-application', (req, res) => {
     const { loanoption, name, address, pincode, loanAmount, mobileno, loantenure } = req.body;
 
-    // Format loan data
-    const loanData = `Loan Option: ${loanoption}\nName: ${name}\nAddress: ${address}\nPincode: ${pincode}\nLoan Amount: ${loanAmount}\nMobile No: ${mobileno}\nLoan Tenure: ${loantenure} months\n------------------------\n`;
+    if (!loanoption || !name || !address || !pincode || !loanAmount || !mobileno || !loantenure) {
+        return res.status(400).send('Error: All form fields are required.');
+    }
 
-    // Append loan data to orders.txt
-    fs.appendFile('orders.txt', loanData, (err) => {
+    const loanData = `
+    -------------- Loan Application --------------
+    Loan Option: ${loanoption}
+    Name: ${name}
+    Address: ${address}
+    Pincode: ${pincode}
+    Loan Amount: ${loanAmount}
+    Mobile No: ${mobileno}
+    Loan Tenure: ${loantenure} months
+    ----------------------------------------------
+    `;
+
+    // ✅ Print loan data in terminal
+    console.log(loanData);
+
+    // ✅ Save loan data in orders.txt
+    fs.appendFile(filePath, loanData, (err) => {
         if (err) {
             console.error('Error saving to file:', err);
-        } else {
-            console.log('Loan data saved to orders.txt');
+            return res.status(500).send('Error saving loan application.');
         }
+        console.log('Loan data successfully saved to orders.txt');
     });
 
-    // Email details
+    // ✅ Send email with loan details
     const mailOptions = {
         from: 'netkeshiv3521@gmail.com',
         to: 'netakeshivam@aca.edu.in',
@@ -48,10 +67,10 @@ app.post('/submit-application', (req, res) => {
 
     transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
-            console.log(error);
-            return res.status(500).send('Error occurred while sending email');
+            console.error('Error sending email:', error);
+            return res.status(500).send('Error occurred while sending email.');
         }
-        console.log('Email sent: ' + info.response);
+        console.log('Email sent successfully: ' + info.response);
 
         res.status(200).send(`
             <!DOCTYPE html>
